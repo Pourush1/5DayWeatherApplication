@@ -1,7 +1,7 @@
 import React from 'react'
 import { fetchCurrentLocationData } from '../../api'
 import WeatherCard from '../WeatherCard/WeatherCard'
-import './CurrentCityWeather.css';
+import './CurrentCityWeather.css'
 
 class CurrentCityWeather extends React.Component {
   constructor() {
