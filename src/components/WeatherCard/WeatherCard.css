@@ -1,0 +1,12 @@
+.card {
+  padding: 10px;
+  margin-right: 7px;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  color: black;
+  background-color: #d0d0d0;
+}
+
+.card-text {
+  font-size: 1.5em;
+}

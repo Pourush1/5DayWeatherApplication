@@ -1,6 +1,7 @@
 import React from 'react'
 import { fetchCurrentLocationData } from '../../api'
 import WeatherCard from '../WeatherCard/WeatherCard'
+import './CurrentCityWeather.css';
 
 class CurrentCityWeather extends React.Component {
   constructor() {
@@ -23,8 +24,9 @@ class CurrentCityWeather extends React.Component {
         }
 
         this.setState({ userPosition: pos })
+        const { userPosition } = this.state
         const userLocationApiResponse = await fetchCurrentLocationData(
-          this.state.userPosition
+          userPosition
         )
         this.setState({ currentCityWeather: userLocationApiResponse.data })
       })

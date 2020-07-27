@@ -1,14 +1,19 @@
+/* eslint react/prop-types: 0 */
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import moment from 'moment'
+import './WeatherCard.css'
 import { DATE_FORMAT, DAY_FORMAT } from '../../utils/constants'
 
-const WeatherCard = (props) => {
-  const { item, history, match, showDay } = props
+const WeatherCard = ({ item, history, match, showDay }) => {
+  console.log(item)
   const cardDate = new Date()
   const weekday = item.dt * 1000
   cardDate.setTime(weekday)
-  const imgURL = `owf owf-${item?.weather && item.weather[0]?.id} owf-5x`
+  const imgURL = `owf owf-${
+    item && item.weather && item.weather[0] && item.weather[0].id
+  } owf-5x`
+  console.log(imgURL)
   const kelvinTemp = item && item.main && item.main.temp
   const fahrenheitTemp = 1.8 * (kelvinTemp - 273) + 32
 
@@ -23,10 +28,14 @@ const WeatherCard = (props) => {
         {fahrenheitTemp && <h2>{Math.round(fahrenheitTemp)} °F</h2>}
         <div className="card-body">
           <p className="card-text">
-            {item?.weather && item.weather[0]?.description}
+            {item &&
+              item.weather &&
+              item.weather[0] &&
+              item.weather[0].description}
           </p>
           {showDay && (
             <button
+              type="button"
               className="btn btn-link"
               onClick={() =>
                 history.push(

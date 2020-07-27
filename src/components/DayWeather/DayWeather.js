@@ -29,8 +29,7 @@ class DayWeather extends React.Component {
         const { userPosition } = this.state
         const fetchedData = await fetchData(userPosition)
         const dayKeyMap = this.createMap(fetchedData)
-        const { day } = this.props
-        const clickedDayWeather = dayKeyMap.get(day)
+        const clickedDayWeather = dayKeyMap.get(this.props.match.params.day)
         this.setState({ dayWeatherCollection: clickedDayWeather })
       })
     }
@@ -54,12 +53,13 @@ class DayWeather extends React.Component {
 
   render() {
     const { dayWeatherCollection } = this.state
-    const { day } = this.props
     return (
       <>
         {dayWeatherCollection ? (
           <div>
-            <h1 className="row justify-content-center">{day}</h1>
+            <h1 className="row justify-content-center">
+              {this.props.match.params.day}
+            </h1>
             <div className="row justify-content-center">
               {dayWeatherCollection.map((item, index) => (
                 <WeatherCard key={index} item={item} showDay={false} />
